@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Access environment variables with fallbacks
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:4210")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://refer-earn-praveeen.netlify.app")
 DATABASE_URL = os.getenv("DATABASE_URL", "")
 SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-default-secret-key")
 
