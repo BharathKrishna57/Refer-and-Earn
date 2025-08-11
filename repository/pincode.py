@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.models.pincode import PincodeMaster
+from models.pincode import PincodeMaster
 
 
 class PincodeRepository:
