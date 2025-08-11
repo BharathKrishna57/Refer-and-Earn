@@ -27,6 +27,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Add a root endpoint to avoid 404 on "/"
+@app.get("/")
+async def root():
+    return {"message": "API is up and running!"}
+
 # Register API routers
 app.include_router(refer_router)
 app.include_router(pincode, prefix="/api")
