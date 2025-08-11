@@ -4,8 +4,8 @@ from pydantic import BaseModel
 from datetime import datetime
 import httpx
 
-from app.db.session import get_db
-from app.models.pincode import PincodeMaster
+from db.session import get_db
+from models.pincode import PincodeMaster
 
 router = APIRouter()
 
