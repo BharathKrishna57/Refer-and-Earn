@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from datetime import datetime
-from app.models.vfh_models import CustomerData, ReferralData, NewReferrerData
+from models.vfh_models import CustomerData, ReferralData, NewReferrerData
 
 
 class ReferRepository:
