@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime
-from app.db.session import Base  # Make sure Base = declarative_base()
+from db.session import Base  # Make sure Base = declarative_base()
  
 class PincodeMaster(Base):
     __tablename__ = "tbl_VHF_PINCODEMASTER"
