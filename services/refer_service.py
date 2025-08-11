@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.repository.refer_repository import ReferRepository
+from repository.refer_repository import ReferRepository
 
 def handle_refer_request(db: Session, mobile: str, name: str = None):
     print("routerrepo")
