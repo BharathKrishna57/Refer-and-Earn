@@ -31,6 +31,10 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"message": "API is up and running!"}
+    
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}    
 
 # Register API routers
 app.include_router(refer_router)
