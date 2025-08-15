@@ -2,22 +2,32 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-DATABASE_URL = "mysql+pymysql://sql12794254:AB8FAY5dPj@sql12.freesqldatabase.com:3306/sql12794254"
+# ✅ Dummy local SQLite database
+DATABASE_URL = "sqlite:///./dummy.db"  # File-based DB
+# If you don't want to persist data at all, use:
+# DATABASE_URL = "sqlite:///:memory:"
 
+# Create engine for SQLite
 engine = create_engine(
     DATABASE_URL,
-    pool_pre_ping=True,
-    pool_size=5,
-    max_overflow=0
+    connect_args={"check_same_thread": False}  # Needed for SQLite multithreading
 )
 
-SessionLocal = sessionmaker(bind=engine)
+# Session maker
+SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
+# Base class for models
 Base = declarative_base()
 
+# Dependency for getting DB session
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+
+# ✅ Optional: Auto-create all tables on startup
+def init_db():
+    from your_models_file import *  # Import all SQLAlchemy models here
+    Base.metadata.create_all(bind=engine)
